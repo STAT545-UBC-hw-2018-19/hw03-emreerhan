@@ -1,0 +1,23 @@
+---
+title: "hw03-dplyr-gapminder"
+author: "Emre"
+date: '2018-10-01'
+output: github_document
+---
+
+# Homework 3: Use dplyr/ggplot2 to manipulate and explore data
+
+## Get librarys
+```{r}
+suppressPackageStartupMessages(library(dplyr))
+suppressPackageStartupMessages(library(gapminder))
+suppressPackageStartupMessages(library(ggplot2))
+```
+
+## Task 1: How is life expectancy changing over time on different continents?
+
+```{r}
+gapminder %>%
+  select(continent, year, lifeExp) %>%
+  
+```
