@@ -1,13 +1,11 @@
 ---
-title: "hw03-dplyr-gapminder"
-author: "Emre"
+title: "HW03: Exploring `gapminder` using `ggplot2` and `dplyr`"
+author: "Emre Erhan"
 date: '2018-10-01'
 output: github_document
 ---
 
-# Homework 3: Use dplyr/ggplot2 to manipulate and explore data
-
-## Get librarys
+## Get libraries
 ```{r}
 suppressPackageStartupMessages(library(dplyr))
 suppressPackageStartupMessages(library(gapminder))

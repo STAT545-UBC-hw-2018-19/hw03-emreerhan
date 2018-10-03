@@ -1,11 +1,9 @@
-hw03-dplyr-gapminder
+HW03: Exploring `gapminder` using `ggplot2` and `dplyr`
 ================
-Emre
+Emre Erhan
 2018-10-01
 
-# Homework 3: Use dplyr/ggplot2 to manipulate and explore data
-
-## Get librarys
+## Get libraries
 
 ``` r
 suppressPackageStartupMessages(library(dplyr))
