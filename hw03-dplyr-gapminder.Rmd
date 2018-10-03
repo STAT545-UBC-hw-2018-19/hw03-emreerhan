@@ -67,4 +67,15 @@ gapminder %>%
   geom_vline(aes(xintercept = 1962), color = 'red')
 ```
 
-Interestingly, life expectancy appears to barely be influenced by the 1962 embargo, while the gdp/capita certainly was. We also see a dip in 1992 that corresponds to the [Cuban Democracy Act](https://en.wikipedia.org/wiki/Cuban_Democracy_Act)
+Interestingly, life expectancy appears to barely be influenced by the 1962 embargo, while the gdp/capita certainly was. We also see a dip in 1992 that corresponds to the [Cuban Democracy Act](https://en.wikipedia.org/wiki/Cuban_Democracy_Act).
+
+```{r}
+gapminder %>%
+  filter(country == "Cuba") %>%
+  select(year, gdpPercap, lifeExp) %>%
+  arrange(year) %>%
+  mutate(change_in_gdpPercap = gdpPercap - lag(gdpPercap)) %>%
+  knitr::kable()
+```
+
+We can see that the greatest change in gdpPercap happened in 1962 and 1992.
