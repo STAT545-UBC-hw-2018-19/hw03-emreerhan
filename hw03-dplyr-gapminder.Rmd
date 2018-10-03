@@ -14,10 +14,57 @@ suppressPackageStartupMessages(library(gapminder))
 suppressPackageStartupMessages(library(ggplot2))
 ```
 
-## Task 1: How is life expectancy changing over time on different continents?
+## Task 1: How is life expectancy changing over time on different continents? And which continent has historically had greater life expectancy?
 
 ```{r}
 gapminder %>%
   select(continent, year, lifeExp) %>%
-  
+  arrange(continent, year) %>%
+  ggplot(aes(year, lifeExp)) +
+  geom_boxplot(aes(group = year)) +
+  facet_wrap(~ continent)
 ```
+
+```{r}
+gapminder %>%
+  select(continent, year, lifeExp) %>%
+  group_by(continent) %>%
+  summarise('mean(lifeExp)' = mean(lifeExp), 'sd(lifeExp)' = sd(lifeExp)) %>%
+  knitr::kable()
+```
+
+The data suggests that Oceania has had the greatest life expectency.
+
+## Task 2: What is the spread of GDP per capita within the continents?
+
+
+```{r}
+gapminder %>%
+  ggplot(aes(gdpPercap)) +
+  scale_x_log10() +
+  geom_density() +
+  facet_wrap(~ continent)
+```
+```{r}
+gapminder %>%
+  select(continent, gdpPercap) %>%
+  group_by(continent) %>%
+  summarise('min(gdpPercap)' = min(gdpPercap),
+            'max(gdpPercap)' = max(gdpPercap),
+            'sd(gdpPercap)' = sd(gdpPercap),
+            'mean(gdpPercap)' = mean(gdpPercap)) %>%
+  knitr::kable()
+```
+
+## Task 3: How did life expectancy and gdp/capita change in Cuba after the 1962 US embargo? 
+
+```{r}
+gapminder %>%
+  filter(country == "Cuba") %>%
+  ggplot(aes(year, gdpPercap)) +
+  geom_point(aes(size = lifeExp)) +
+  geom_line() +
+  geom_vline(aes(xintercept = 1962), color = 'red')
+```
+
+Interestingly, life expectancy appears to barely be influenced by the 1962 embargo, while the gdp/capita certainly was. We also see a dip in 1992 that corresponds to the [Cuban Democracy Act](https://en.wikipedia.org/wiki/Cuban_Democracy_Act)
