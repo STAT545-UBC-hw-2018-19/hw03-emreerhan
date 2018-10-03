@@ -91,4 +91,31 @@ gapminder %>%
 Interestingly, life expectancy appears to barely be influenced by the
 1962 embargo, while the gdp/capita certainly was. We also see a dip in
 1992 that corresponds to the [Cuban Democracy
-Act](https://en.wikipedia.org/wiki/Cuban_Democracy_Act)
+Act](https://en.wikipedia.org/wiki/Cuban_Democracy_Act).
+
+``` r
+gapminder %>%
+  filter(country == "Cuba") %>%
+  select(year, gdpPercap, lifeExp) %>%
+  arrange(year) %>%
+  mutate(change_in_gdpPercap = gdpPercap - lag(gdpPercap)) %>%
+  knitr::kable()
+```
+
+| year | gdpPercap | lifeExp | change\_in\_gdpPercap |
+| ---: | --------: | ------: | --------------------: |
+| 1952 |  5586.539 |  59.421 |                    NA |
+| 1957 |  6092.174 |  62.325 |              505.6356 |
+| 1962 |  5180.756 |  65.246 |            \-911.4184 |
+| 1967 |  5690.268 |  68.290 |              509.5121 |
+| 1972 |  5305.445 |  70.723 |            \-384.8228 |
+| 1977 |  6380.495 |  72.649 |             1075.0497 |
+| 1982 |  7316.918 |  73.717 |              936.4231 |
+| 1987 |  7532.925 |  74.174 |              216.0067 |
+| 1992 |  5592.844 |  74.414 |           \-1940.0808 |
+| 1997 |  5431.990 |  76.151 |            \-160.8535 |
+| 2002 |  6340.647 |  77.158 |              908.6563 |
+| 2007 |  8948.103 |  78.273 |             2607.4562 |
+
+We can see that the greatest change in gdpPercap happened in 1962 and
+1992.
