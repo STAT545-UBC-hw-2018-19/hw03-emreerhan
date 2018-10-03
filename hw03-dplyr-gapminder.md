@@ -117,3 +117,12 @@ gapminder %>%
 
 We can see that the greatest change in gdpPercap happened in 1962 and
 1992.
+
+## Useful links
+
+I did not need many resources to complete this assignment. These are the
+ones that I did use: \* Our in-class
+[cm007](https://github.com/emreerhan/STAT545_participation/blob/master/cm007/cm007-exercise.md)
+participation document. \* A [StackOverflow
+link](https://stackoverflow.com/questions/14846547/calculate-difference-between-values-in-consecutive-rows-by-group)
+describing the `lag` function.
